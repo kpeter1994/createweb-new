@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("primeicons/primeicons.css");
+
+.display-container{
+    @apply container mx-auto;
+}
+
+.section-padding{
+    @apply py-8 lg:py-28 px-3 lg:px-6;
+}
+
+.section-title{
+    @apply text-3xl lg:text-5xl 2xl:text-7xl lg:leading-[110%] font-[800] mb-3;
+}
+.section-lead{
+    @apply text-lg lg:text-2xl lg:leading-[130%] font-[400] text-gray-500;
+}
