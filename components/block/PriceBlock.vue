@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PriceCard from "~/components/shared/PriceCard.vue";
+import FadeInComponent from "~/components/animation/FadeInComponent.vue";
 
 const props = defineProps<{
   title: string
@@ -17,10 +18,13 @@ const props = defineProps<{
 
   <section class="section-padding bg-[url('/images/minimalist-bgc.webp')]">
     <div class="container mx-auto">
-      <div class="max-w-4xl mb-6 lg:mb-20 relative">
-        <h2 class="section-title text-center lg:text-left">{{ title }}</h2>
-        <p class="section-lead text-center lg:text-left">{{ text }}</p>
-      </div>
+      <FadeInComponent>
+        <div class="max-w-4xl mb-6 lg:mb-20 relative">
+          <h2 class="section-title text-center lg:text-left">{{ title }}</h2>
+          <p class="section-lead text-center lg:text-left">{{ text }}</p>
+        </div>
+      </FadeInComponent>
+
 
       <div  class="flex flex-col items-center lg:flex-row gap-6 justify-center flex-wrap">
 

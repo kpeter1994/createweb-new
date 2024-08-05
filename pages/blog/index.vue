@@ -89,6 +89,7 @@ query PageQuery{
             id
             title
             text
+            blogLink: link{id label href theme}
             blogs{
               data{
                 id

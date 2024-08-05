@@ -27,9 +27,11 @@ const {data} = await useAsyncQuery(query)
       </NuxtLink>
 
       <nav>
-        <ul class="flex gap-3">
+        <ul class="flex gap-3 font-semibold">
           <li v-for="item in data.navigation.data.attributes.pages.data">
-            <NuxtLink :to="item.attributes.slug ? '/' + item.attributes.slug : '/' " prefetch>{{item.attributes.title}}</NuxtLink></li>
+            <NuxtLink  class="hover:bg-gray-100 transition-all duration-300 py-1 px-2 rounded-full"
+                       active-class="bg-gray-900 hover:bg-gray-900 text-white py-1 px-2 rounded-full cursor-default"
+                       :to="item.attributes.slug ? '/' + item.attributes.slug : '/' " prefetch>{{item.attributes.title}}</NuxtLink></li>
         </ul>
       </nav>
 

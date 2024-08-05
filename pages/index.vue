@@ -12,6 +12,7 @@ import WhyWeBlock from "~/components/block/WhyWeBlock.vue";
 import ServicesBlock from "~/components/block/ServicesBlock.vue";
 import StarterFadeComponent from "~/components/animation/StarterFadeComponent.vue";
 import PriceBlock from "~/components/block/PriceBlock.vue";
+import CategoryBlock from "~/components/block/CategoryBlock.vue";
 
 const query = gql`
 query PageQuery{
@@ -88,6 +89,7 @@ query PageQuery{
             id
             title
             text
+            blogLink: link{id label href theme}
             blogs{
               data{
                 id
@@ -137,6 +139,7 @@ const {data} = await useAsyncQuery(query)
 
 const componentsMap: { [key: string]: any }= {
   'ComponentBlockHero': HeroBlock,
+  'ComponentBlockCategory': CategoryBlock,
   'ComponentBlockContent': ContentBlock,
   'ComponentBlockCards': WhyWeBlock,
   'ComponentBlockCta': CtaBlock,
@@ -170,13 +173,13 @@ const getComponent = (typename: string) => componentsMap[typename] || null
 
 <template>
 
-  <Suspense>
+
     <StarterFadeComponent>
       <div v-for="element in pageBlocks" :key="element.id">
         <component :is="getComponent(element.__typename)" v-bind="element" />
       </div>
     </StarterFadeComponent>
-  </Suspense>
+
 
 
 </template>
