@@ -84,6 +84,28 @@ export interface Block {
    card?: card[];
    blog?: blog;
    blogs?: blog[];
+   form?: form
+}
+
+
+
+export interface formComponent{
+    __typename: string;
+    label?: string
+    type?: string
+    name?: string
+    id?: string
+}
+
+export interface form {
+    data: {
+        attributes: {
+            title: string;
+            url: string;
+            text: string;
+            formComponent: formComponent[]
+        }
+    }
 }
 
 export interface Seo{

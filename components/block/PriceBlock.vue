@@ -26,7 +26,7 @@ const props = defineProps<{
       </FadeInComponent>
 
 
-      <div  class="flex flex-col items-center lg:flex-row gap-6 justify-center flex-wrap">
+      <div  class="flex flex-col items-center lg:flex-row gap-6 justify-center">
 
 
         <PriceCard v-for="(item, index) in card" :card="item"></PriceCard>

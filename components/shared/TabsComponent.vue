@@ -44,7 +44,7 @@ const buttonData = {
       <button v-for="(item, id) in props.data"
               @click="setActiveTab(id)"
               :key="id"
-              class="text-xs py-3 lg:p-8 lg:text-2xl font-bold flex flex-col gap-1.5 rounded-t lg:rounded-t-[1rem] grow  justify-center items-center transition-all duration-300"
+              class="tab-button"
               :class="activeTab === id ? 'bg-black text-white' : 'bg-white text-black hover:bg-gray-200 '"
       >
         {{ item.name }}
@@ -91,5 +91,9 @@ const buttonData = {
 
 .service-content ul li {
   @apply mb-1.5;
+}
+
+.tab-button {
+  @apply text-xs py-3 lg:p-6 2xl:p-8 lg:text-xl 2xl:text-2xl font-bold flex flex-col gap-1.5 rounded-t lg:rounded-t-[1rem] grow  justify-center items-center transition-all duration-300
 }
 </style>

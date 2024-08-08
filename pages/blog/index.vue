@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type {Block} from "~/type";
-
+import {getPageQuery} from "~/graphql/getPageQuery";
 import HeroBlock from "~/components/block/HeroBlock.vue";
 import ContentBlock from "~/components/block/ContentBlock.vue";
 import CtaBlock from "~/components/block/CtaBlock.vue";
@@ -118,7 +118,7 @@ query PageQuery{
 }
 `
 
-const {data} = await useAsyncQuery(query)
+const {data} = await useAsyncQuery(getPageQuery, {id: 2})
 
 console.log(data)
 

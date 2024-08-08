@@ -22,10 +22,10 @@ let buttonData = {
 </script>
 
 <template>
-  <div class="p-12 rounded-[2rem] min-w-sm max-w-md shadow price" :class="card.theme">
-    <p class="text-xl lg:text-3xl font-bold mb-1.5">{{card.title}} <span class="text-lg font-medium">csomag</span></p>
+  <div class="price" :class="card.theme">
+    <p class="text-xl xl:text-2xl 2xl:text-3xl font-bold mb-1.5">{{card.title}} <span class="text-lg font-medium">csomag</span></p>
     <h3  class="font-semibold mb-1.5 text-gray-500">{{card.name}}</h3>
-    <span class="text-2xl lg:text-5xl font-[800] text-gray-500 mb-4 block price-title">{{card.price}} <span class="text-lg">-tól</span></span>
+    <span class="text-2xl xl:text-3xl 2xl:text-5xl font-[800] text-gray-500 mb-4 block price-title">{{card.price}} <span class="text-lg">-tól</span></span>
 
 
     <div class="space-y-2 text-sm lg:text-base" v-html="card.text">
@@ -43,6 +43,13 @@ let buttonData = {
 </template>
 
 <style >
+
+.price{
+  @apply p-6 shadow 2xl:p-12 ;
+  border-radius: 2rem;
+}
+
+
 .light{
   @apply bg-white;
 }
@@ -61,8 +68,9 @@ let buttonData = {
 }
 
 .price ul{
-  @apply space-y-2 list-disc pl-4;
+  @apply space-y-1 2xl:space-y-2 list-disc pl-4;
 }
+
 
 
 

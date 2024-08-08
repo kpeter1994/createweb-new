@@ -26,8 +26,8 @@ const props = defineProps<{
         </div>
       </div>
 
-      <div class="mt-12 flex flex-col lg:flex-row gap-6 pb-6">
-        <div v-for="item in blogs.data" :key="item.id" class="max-w-lg">
+      <div class="mt-12 flex flex-col lg:flex-row justify-center items-center lg:items-start flex-wrap  gap-6 pb-6">
+        <div v-for="item in blogs.data" :key="item.id" class="max-w-md">
           <div class="w-full lg:h-[300px] aspect-[6/4] ">
             <NuxtImg  v-if="item.attributes.image.data !== null"
                       class="rounded-[2rem] w-full h-full object-cover"

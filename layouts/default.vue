@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
   <main class="bg-black pt-3">
-    <div ref="fadeItem" class="bg-white rounded-t-[4rem]">
+    <div ref="fadeItem" class="bg-white rounded-t-[2rem] lg:rounded-t-[3rem] 2xl:rounded-t-[4rem]">
       <NavComponent />
       <slot />
     </div>

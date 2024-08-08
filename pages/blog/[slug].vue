@@ -75,7 +75,7 @@ onMounted(() => {
       const tocLink = document.createElement('a');
       tocLink.href = `#${id}`;
       tocLink.textContent = header.textContent;
-      tocLink.className = header.tagName.toLowerCase() === 'h2' ? 'font-bold text-blue-500 hover:text-blue-400 block bg-opacity-50 underline p-1' : 'ml-4 block text-blue-500 hover:text-blue-400';
+      tocLink.className = header.tagName.toLowerCase() === 'h2' ? 'article-link' : 'article-sub-link';
 
       tocItem.appendChild(tocLink);
       tocList.appendChild(tocItem);
@@ -90,7 +90,7 @@ onMounted(() => {
 <template>
 
 <StarterFadeComponent>
-  <article class="max-w-4xl mx-auto">
+  <article class="max-w-5xl mx-auto px-3 lg:px-12">
 
     <h1 class="text-4xl lg:text-6xl font-bold mb-6">{{blog.title}}</h1>
     <div class="text-lg leading-relaxed lg:text-xl font-semibold text-gray-600 lg:leading-relaxed" v-html="blog.description">
@@ -138,7 +138,7 @@ onMounted(() => {
 }
 
 .content blockquote {
-  @apply border-l-8 pl-6 my-12 text-2xl font-semibold opacity-90;
+  @apply border-l-8 pl-6 my-12 text-lg lg:text-2xl font-semibold opacity-90;
 }
 
 .content a {
@@ -159,5 +159,12 @@ onMounted(() => {
 
 figcaption{
   @apply text-center text-sm text-gray-500;
+}
+
+.article-link{
+  @apply font-bold bg-neutral-800 text-white hover:bg-neutral-700 block  py-1 px-2 transition-all duration-300
+}
+.article-sub-link{
+  @apply font-bold bg-neutral-700 text-white hover:bg-neutral-500 block  py-1 px-2 ml-4 transition-all duration-300
 }
 </style>

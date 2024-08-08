@@ -33,7 +33,7 @@ console.log(Swiper)
 </script>
 
 <template>
-  <section class="section-padding bg-neutral-50 overflow-hidden relative">
+  <section class="section-padding bg-neutral-100 overflow-hidden relative">
     <div class="max-w-4xl mx-auto mb-12">
       <FadeInComponent>
         <h2 class="section-title mb-6 text-center" v-html="title"></h2>
@@ -47,7 +47,7 @@ console.log(Swiper)
 
         <swiper :slides-per-view="1"
                 :loop="true"
-                speed="1000"
+                speed="600"
                 :breakpoints="{
             640: {
                 slidesPerView: 1,
@@ -67,11 +67,11 @@ console.log(Swiper)
         }"
                 :space-between="50">
           <swiper-slide
-              class="bg-white border-2 border-black rounded-3xl p-6 lg:p-12"
+              class="bg-white  border-2 border-black rounded-3xl p-6 lg:p-12"
               v-for="(slide, index) in card"
               :key="index">
 
-            <div class="text-lg lg:text-2xl xl:text-xl mb-6" v-html="slide.text"></div>
+            <div class="lg:text-lg xl:text-xl mb-6" v-html="slide.text"></div>
             <div class="flex gap-3 items-center">
               <div class="w-26 h-26 border-radius">
                 <NuxtImg
@@ -118,8 +118,16 @@ console.log(Swiper)
 .swiper-btn:active{
   @apply bg-neutral-600;
 }
-.swiper-slide-active{
-  @apply bg-neutral-800 text-white transition-colors duration-1000  bg-[url('/images/lines.svg')];
-}
 
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 420px; /* Fix height for all slides */
+}
+@media (min-width: 768px) {
+  .swiper-slide {
+    height: 550px; /* Fix height for all slides */
+  }
+}
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type {Block} from "~/type";
+import {getPageQuery} from "~/graphql/getPageQuery";
 
 import HeroBlock from "~/components/block/HeroBlock.vue";
 import ContentBlock from "~/components/block/ContentBlock.vue";
@@ -13,130 +14,11 @@ import ServicesBlock from "~/components/block/ServicesBlock.vue";
 import StarterFadeComponent from "~/components/animation/StarterFadeComponent.vue";
 import PriceBlock from "~/components/block/PriceBlock.vue";
 import CategoryBlock from "~/components/block/CategoryBlock.vue";
+import FormBlock from "~/components/block/FormBlock.vue";
 
-const query = gql`
-query PageQuery{
-  page(id:1){
-    data{
-      attributes{
-        title
-        slug
-        seo{
-          canonical
-          MetaTitle
-          MetaDescription
-          MetaImege{data{attributes{hash alternativeText}}}
-          StructuredData
-        }
-        blocks{
-          ... on ComponentBlockHero{
-            id
-            title
-            text
-            link{id label href theme}
-            image{data{attributes{url alternativeText}}}
-            slider{images{data{attributes{url alternativeText}}}}
-          }
-          ... on ComponentBlockServices{
-            id
-            title
-            text
-            tabs{
-              name
-              title
-              text
-              image{data{attributes{url alternativeText}}}
-            }
-          }
-          ... on ComponentBlockCta{
-            title
-            text
-            ctaLink: link { id label href theme }
-          }
-          ... on ComponentBlockCards{
-            title
-            text
-            card{
-              title
-              text
-              image{data{attributes{url alternativeText}}}
-            }
-          }
-          ... on ComponentBlockContent{
-            title
-            text
-            image{data{attributes{url alternativeText}}}
-          }
-          ... on ComponentBlockTestimonial{
-            title
-            text
-            card{
-              title
-              text
-              image{data{attributes{alternativeText url}}}
-            }
-          }
-          ... on ComponentBlockFaq{
-            title
-            text
-            accordion{
-              id
-              title
-              text
-            }
-          }
-          ... on ComponentBlockCategory{
-            id
-            title
-            text
-            blogLink: link{id label href theme}
-            blogs{
-              data{
-                id
-                attributes{
-                  slug
-                  title
-                  description
-                  image{data{attributes{url alternativeText}}}
-                }
-              }
-            }
-          }
-          ... on ComponentBlockMainBlog{
-            blog{data{attributes{
-              title
-              image{data{attributes{url alternativeText}}}
-              description
-              slug
-            }}}
-          }
-          ... on ComponentBlockPrice{
-            id
-            title
-            text
-            card{
-              title
-              name
-              text
-              price
-              theme
-            }
-          }
-          ... on ComponentBlockFaq{
-            id
-            title
-            text
-            accordion{id text text}
-          }
-        }
-      }
-    }
-  }
-}
-`
 
-const {data} = await useAsyncQuery(query)
-
+const {data} = await useAsyncQuery(getPageQuery, {id: 1})
+// console.log(data)
 const componentsMap: { [key: string]: any }= {
   'ComponentBlockHero': HeroBlock,
   'ComponentBlockCategory': CategoryBlock,
@@ -150,6 +32,7 @@ const componentsMap: { [key: string]: any }= {
   'ComponentBlockWhyWe': WhyWeBlock,
   'ComponentBlockServices': ServicesBlock,
   'ComponentBlockPrice': PriceBlock,
+  'ComponentBlockFormPage': FormBlock
 }
 
 const pageTitle = ref<string>('')
